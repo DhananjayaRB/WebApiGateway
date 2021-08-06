@@ -2,16 +2,39 @@
   "Routes": [
     //weatherforecast API
     {
-      "DownstreamPathTemplate": "WeatherForecast",
+      "DownstreamPathTemplate": "/Employee",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 5001
+          "Port": "5008"
         }
       ],
-      "UpstreamPathTemplate": "api/WeatherForecast",
+      "UpstreamPathTemplate": "/Employee",
+      "Key": "Employee",
       "UpstreamHttpMethod": [ "GET" ]
+    },
+    {
+      "DownstreamPathTemplate": "/Admin",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": "5001"
+        }
+      ],
+      "UpstreamPathTemplate": "/Admin",
+      "Key": "Admin",
+      "UpstreamHttpMethod": [ "GET" ]
+    }
+  ],
+  "Aggregates": [
+    {
+      "RouteKeys": [
+        "Employee",
+        "Admin"
+      ],
+      "UpstreamPathTemplate": "/team-resolve"
     }
   ],
   "GlobalConfiguration": {

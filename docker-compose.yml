@@ -1,0 +1,22 @@
+version: '3.4'
+
+services:
+  webapigateway:
+    image: ${DOCKER_REGISTRY-}webapigateway
+    build:
+      context: .
+      dockerfile: WebApiGateway/Dockerfile
+
+  resolveemployees:
+    image: ${DOCKER_REGISTRY-}resolveemployees
+    build:
+      context: .
+      dockerfile: ResolveEmployees/Dockerfile
+
+
+  resolveadmin:
+    image: ${DOCKER_REGISTRY-}resolveadmin
+    build:
+      context: .
+      dockerfile: ResolveAdmin/Dockerfile
+
